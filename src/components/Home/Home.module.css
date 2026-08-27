@@ -1,0 +1,293 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0 56px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 56px;
+}
+
+.title {
+  font-size: 52px;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  color: var(--text-dim);
+  font-size: 18px;
+  max-width: 70ch;
+}
+
+.overall {
+  margin-top: 20px;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.overallHead {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-deep);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--teal));
+  border-radius: 999px;
+  transition: width 300ms ease;
+}
+
+.reset {
+  background: none;
+  border: none;
+  padding: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-faint);
+  text-decoration: underline;
+}
+
+.reset:hover {
+  color: var(--red);
+}
+
+.track {
+  margin-bottom: 64px;
+}
+
+.trackHead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.trackHead .kicker {
+  color: var(--track-color);
+}
+
+.trackTitle {
+  font-size: 30px;
+}
+
+.trackBlueprint {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+/* Caminho vertical: a linha liga os marcadores e dá a leitura de "mapa". */
+.path {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.node {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 18px;
+  align-items: start;
+  position: relative;
+}
+
+.node:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 46px;
+  bottom: -14px;
+  width: 2px;
+  background: var(--border);
+}
+
+.marker {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  border: 2px solid var(--border);
+  background: var(--bg-deep);
+  color: var(--text-faint);
+  position: relative;
+  z-index: 1;
+}
+
+.marker_done {
+  border-color: var(--green);
+  color: var(--green);
+  font-size: 20px;
+}
+
+.marker_in-progress {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.marker_available {
+  border-color: var(--track-color);
+  color: var(--track-color);
+}
+
+.card {
+  width: 100%;
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 150ms ease, transform 150ms ease, background 150ms ease;
+}
+
+.card:not(:disabled):hover {
+  border-color: var(--track-color);
+  background: var(--card-hover);
+  transform: translateY(-2px);
+}
+
+.card:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+  box-shadow: none;
+}
+
+.card_done {
+  border-left: 3px solid var(--green);
+}
+
+.card_in-progress {
+  border-left: 3px solid var(--amber);
+}
+
+.card_available {
+  border-left: 3px solid var(--track-color);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cardHead h3 {
+  font-size: 19px;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.badge_done {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 45%, transparent);
+}
+
+.badge_in-progress {
+  color: var(--amber);
+  border-color: color-mix(in srgb, var(--amber) 45%, transparent);
+}
+
+.badge_available {
+  color: var(--track-color);
+  border-color: color-mix(in srgb, var(--track-color) 45%, transparent);
+}
+
+.cardSummary {
+  color: var(--text-dim);
+  font-size: 15px;
+  max-width: 76ch;
+}
+
+/* --text-faint sobre o card tem contraste baixo demais para texto mono
+   pequeno; a meta usa --text-dim para continuar legível também no card
+   desabilitado, que já perde opacidade. */
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 11px;
+  color: var(--text-dim);
+  padding-top: 4px;
+}
+
+.score {
+  color: var(--green);
+}
+
+.lockHint {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  max-width: 76ch;
+}
+
+.footerDim {
+  color: var(--text-faint);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 34px;
+  }
+
+  .node {
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+  }
+
+  .marker {
+    width: 36px;
+    height: 36px;
+    font-size: 11px;
+  }
+
+  .node:not(:last-child)::before {
+    left: 18px;
+    top: 36px;
+  }
+}
